@@ -22,7 +22,7 @@ int main(void)
             break;
         }
         else
-            std::cout << RED << "" << RESET << "\n" << std::endl;
+            std::cout << RED << "Invalid command. Please try again." << RESET << "\n" << std::endl;
 
         if (std::cin.eof())
             break;

@@ -5,13 +5,16 @@
 #include <cstdlib>
 #include <sstream>
 
-PhoneBook::PhoneBook() : currentIndex(0), contactCount(0) {}
+PhoneBook::PhoneBook()
+{
+    currentIndex = 0;
+    contactCount = 0;
+}
 
 void PhoneBook::addContact() {
     Contact& contact = contacts[currentIndex];
     std::string input;
 
-    // 各フィールドで空文字列チェックを追加
     std::cout << "Enter first name: ";
     std::getline(std::cin, input);
     if (input.empty()) {
@@ -72,13 +75,13 @@ void PhoneBook::searchContact() {
         return;
     }
 
-    // 正しい表示フォーマット
+    std::cout << "----------|----------|----------|----------" << std::endl;
     std::cout << "     Index|First Name| Last Name|  Nickname" << std::endl;
     std::cout << "----------|----------|----------|----------" << std::endl;
 
     for (int i = 0; i < contactCount; i++) {
         const Contact& contact = contacts[i];
-        std::cout << std::setw(10) << i << "|"  // 0ベースのインデックス
+        std::cout << std::setw(10) << i << "|"
                   << std::setw(10) << formatString(contact.getFirstName()) << "|"
                   << std::setw(10) << formatString(contact.getLastName()) << "|"
                   << std::setw(10) << formatString(contact.getNickname())
